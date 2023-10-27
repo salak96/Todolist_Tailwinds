@@ -14,6 +14,10 @@ git clone https://github.com/salak96/Todolist_Tailwinds.git
 ```bash
 npm install
 ```
+- run project
+```bash
+npm run dev
+```
 
 ## Formatter pritter code
 

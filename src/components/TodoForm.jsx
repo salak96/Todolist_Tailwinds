@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-export default function TodoForm({addTodo,todo}) {
+export default function TodoForm({ addTodo, todo }) {
     //definisi state title
     const [title, setTitle] = useState('');
     // Definisikan function handleSubmit
@@ -9,24 +9,21 @@ export default function TodoForm({addTodo,todo}) {
         e.preventDefault();
         addTodo(title);
         setTitle('');
-    }
+    };
     // Definisikan function "handleChangeTitle"
     const handleChangeTitle = (e) => {
         setTitle(e.target.value);
-    }
-    function AddTodo() {
+    };
+    function AddTodo(todo) {
         addTodo(title);
         setTitle('');
-        
     }
-   
-   
     return (
         <div className='flex items-center justify-center w-full'>
             <form
-             onSubmit={(e) => {
-                handleSubmit(e);
-              }}
+                onSubmit={(e) => {
+                    handleSubmit(e);
+                }}
             >
                 <div className='relative m-5'>
                     <input
@@ -45,7 +42,7 @@ export default function TodoForm({addTodo,todo}) {
                         onClick={() => {
                             AddTodo();
                         }}
-                   >    
+                    >
                         Add
                     </button>
                 </div>

@@ -30,6 +30,12 @@ export default function TodoItem({todo}) {
         });
         setTodos(updatedTodos);
     };
+    const deleteTodo = (id) => {
+        const updatedTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(updatedTodos);
+        console.log(updatedTodos);
+    }
+
     return (
         <div className='flex flex-col items-center mt-1'>
             {todos.map((todo) => (
@@ -37,9 +43,12 @@ export default function TodoItem({todo}) {
                     <input type='checkbox' className='mr-2 m' checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
                     <h1 className={todo.completed ? 'line-through' : ''}>{todo.title}</h1>
                     <div className='ml-auto '>
-                    <FontAwesomeIcon icon={faXmark} style={{color: "#ff0000",}} />
+                    <button onClick={()=> deleteTodo(todo.id)}><FontAwesomeIcon icon={faXmark} style={{color: "#ff0000",}} />
+                        </button>
                     <br />
+                    <button>
                     <FontAwesomeIcon icon={faPenToSquare} />
+                    </button>
                     </div>
                 </div>
             ))}

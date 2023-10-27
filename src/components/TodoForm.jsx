@@ -1,19 +1,51 @@
-export default function TodoForm() {
+import React from 'react';
+import { useState } from 'react';
+
+export default function TodoForm({addTodo,todo}) {
+    //definisi state title
+    const [title, setTitle] = useState('');
+    // Definisikan function handleSubmit
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addTodo(title);
+        setTitle('');
+    }
+    // Definisikan function "handleChangeTitle"
+    const handleChangeTitle = (e) => {
+        setTitle(e.target.value);
+    }
+    function AddTodo() {
+        addTodo(title);
+        setTitle('');
+        
+    }
+   
+   
     return (
-        <div className='flex items-center justify-center w-full h-full'>
-            <form>
-                <div className='relative mt-5'>
+        <div className='flex items-center justify-center w-full'>
+            <form
+             onSubmit={(e) => {
+                handleSubmit(e);
+              }}
+            >
+                <div className='relative m-5'>
                     <input
                         type='Add'
                         id='default-Add'
-                        className='block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                        className='w-full p-3 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500'
                         placeholder='Add your to do'
-                        required
+                        onChange={(e) => {
+                            handleChangeTitle(e);
+                        }}
+                        value={title}
                     />
                     <button
                         type='submit'
-                        className='text-white absolute right-2.5 bottom-2.5 bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover-bg-red-700 dark:focus-ring-blue-800'
-                    >
+                        className='absolute right-2 top-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-1'
+                        onClick={() => {
+                            AddTodo();
+                        }}
+                   >    
                         Add
                     </button>
                 </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark,faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // Import the faPlus icon
 
-export default function TodoItem({todo}) {
+export default function TodoItem({ todo }) {
      const [todos, setTodos] = useState([
         {
             id: 1,
@@ -20,6 +20,9 @@ export default function TodoItem({todo}) {
             completed: false,
         },
     ]);
+      const addTodo = () => {
+    console.log('This is addTodo Function is ')
+  }
 
     const toggleTodo = (id) => {
         const updatedTodos = todos.map((todo) => {
@@ -33,8 +36,9 @@ export default function TodoItem({todo}) {
     const deleteTodo = (id) => {
         const updatedTodos = todos.filter((todo) => todo.id !== id);
         setTodos(updatedTodos);
-        console.log(updatedTodos);
+        // console.log(updatedTodos);
     }
+
 
     return (
         <div className='flex flex-col items-center mt-1'>
